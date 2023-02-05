@@ -38,7 +38,6 @@ def substrings(string)
   substrings_array = []
   char_index = 0
   loop do
-    string[char_index]
     min_string_size = 2
     max_string_size = string.size - char_index
     counter = 0
@@ -49,7 +48,7 @@ def substrings(string)
     end
 
     char_index += 1
-    break if char_index == string.size
+    break if char_index > string.size - 2
   end
 
   substrings_array
