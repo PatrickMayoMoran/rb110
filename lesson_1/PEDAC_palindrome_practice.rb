@@ -37,9 +37,11 @@ end
 def substrings(string)
   substrings_array = []
   char_index = 0
+
   loop do
     string_size = 2
     max_string_size = string.size - char_index
+
     loop do
       substrings_array << string[char_index, string_size]
       string_size += 1
