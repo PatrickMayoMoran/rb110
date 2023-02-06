@@ -1,6 +1,12 @@
 # PROBLEM: remove people older than 100
 ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 402, "Eddie" => 10 }
 
+# GIVEN SOLUTION: modify the hash in place! Keyword 'remove' from problem
+# should have been the clue. Note to think about whether modifying existing
+# object or returning a new object
+ages.keep_if {|k,v| v < 100}
+p ages
+
 # OPTION 1: build new hash with simple looping
 young_people = {}
 ages.each do |k,v|
