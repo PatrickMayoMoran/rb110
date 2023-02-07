@@ -25,7 +25,42 @@
 
 def create_UUID
   uuid = ''
+  uuid << make_segment(8) + '-'
+  3.times do
+    uuid << make_segment(4) + '-'
+  end
+  uuid << make_segment(12)
+  uuid
 end
 
 def make_segment(n)
+  hexadecimals = ('0'..'9').to_a + ('a'..'f').to_a
+  segment = ''
+  n.times do
+    segment << hexadecimals.sample
+  end
+
+  segment
 end
+
+p create_UUID
+
+# OPTION 2: given solution, iteration over range objects and an array with 
+# segment sizes
+
+def generate_UUID
+  characters = []
+  (0..9).each { |num| characters << num.to_s }
+  ('a'..'f').each { |letter| characters << letter }
+
+  uuid = ''
+  segments = [8, 4, 4, 4, 12]
+  segments.each_with_index do |segment, index|
+    segment.times { |_| uuid << characters.sample }
+    uuid << '-' unless index >= segments.size - 1
+  end
+
+  uuid
+end
+
+p generate_UUID
