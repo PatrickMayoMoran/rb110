@@ -27,6 +27,11 @@ def increment_hash_values(array)
   end
 end
 
-p arr
-p increment_hash_values(arr)
-p arr
+# OPTION 2: each with object implementation
+arr.each_with_object([]) do |hash, array|
+  incremented_hash = {}
+  hash.each do |key, value|
+    incremented_hash[key] = value + 1
+  end
+  array << incremented_hash
+end
