@@ -23,6 +23,11 @@ def player_places_piece(board)
   board[choice] = X_MARKER
 end
 
+def computer_places_piece(board)
+  choice = empty_squares(board).sample
+  board[choice] = O_MARKER
+end
+
 def initialize_board
   new_board = {}
   (1..9).each { |num| new_board[num] = INITIAL_MARKER }
@@ -57,6 +62,7 @@ display_board(board)
 
 loop do 
   player_places_piece(board)
+  computer_places_piece(board)
   display_board(board)
   break if winner?(board) || full?(board)
 end
