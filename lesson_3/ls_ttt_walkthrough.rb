@@ -1,6 +1,24 @@
+INITIAL_MARKER = ' '
+X_MARKER = 'X'
+O_MARKER = 'O'
+
+def prompt(msg)
+  puts "=> #{msg}"
+end
+
+def empty_squares(board)
+  board.keys.select {|square| board[square] == INITIAL_MARKER}
+end
+
+def player_places_piece(board)
+  prompt "Choose a valid square: #{empty_squares(board)}"
+  choice = gets.chomp.to_i
+  board[choice] = X_MARKER if empty_squares(board).include?(choice)
+end
+
 def initialize_board
   new_board = {}
-  (0..9).each { |num| new_board[num] = ' ' }
+  (1..9).each { |num| new_board[num] = INITIAL_MARKER }
   new_board
 end
 
@@ -20,3 +38,8 @@ end
 
 board = initialize_board
 display_board(board)
+
+loop do
+player_places_piece(board)
+display_board(board)
+end
