@@ -30,6 +30,7 @@ def initialize_board
 end
 
 def display_board(board)
+  system 'clear'
   puts "     |     |     "
   puts "  #{board[1]}  |  #{board[2]}  |  #{board[3]}  "
   puts "     |     |     "
