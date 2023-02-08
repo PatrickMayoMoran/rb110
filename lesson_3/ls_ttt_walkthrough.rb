@@ -44,10 +44,19 @@ def display_board(board)
   puts "     |     |     "
 end
 
+def winner?(board)
+  false
+end
+
+def full?(board)
+  empty_squares(board).empty?
+end
+
 board = initialize_board
 display_board(board)
 
 loop do 
-player_places_piece(board)
-display_board(board)
+  player_places_piece(board)
+  display_board(board)
+  break if winner?(board) || full?(board)
 end
