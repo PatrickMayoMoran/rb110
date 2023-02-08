@@ -1,3 +1,5 @@
+require 'pry'
+
 INITIAL_MARKER = ' '
 X_MARKER = 'X'
 O_MARKER = 'O'
@@ -44,5 +46,7 @@ end
 board = initialize_board
 display_board(board)
 
+loop do 
 player_places_piece(board)
 display_board(board)
+end
