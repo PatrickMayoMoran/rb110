@@ -50,7 +50,22 @@ def display_board(board)
 end
 
 def winner?(board)
-  false
+  !!detect_winner(board)
+end
+
+def detect_winner(board)
+  winning_squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                    [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                    [[1, 5, 9], [3, 5, 7]]              # diagonals
+
+  markers = [X_MARKER, O_MARKER]
+  markers.each do |marker|
+    winning_squares.each do |line|
+      # binding.pry
+      return true if line.all? { |square| board[square] == marker }
+    end
+  end
+  nil
 end
 
 def full?(board)
