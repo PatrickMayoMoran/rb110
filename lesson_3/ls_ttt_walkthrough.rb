@@ -11,9 +11,14 @@ def empty_squares(board)
 end
 
 def player_places_piece(board)
-  prompt "Choose a valid square: #{empty_squares(board)}"
-  choice = gets.chomp.to_i
-  board[choice] = X_MARKER if empty_squares(board).include?(choice)
+  choice = ''
+  loop do
+    prompt "Choose a valid square: #{empty_squares(board)}"
+    choice = gets.chomp.to_i
+    break if empty_squares(board).include?(choice)
+    prompt "Not a valid square - choose again"
+  end
+  board[choice] = X_MARKER
 end
 
 def initialize_board
@@ -39,7 +44,5 @@ end
 board = initialize_board
 display_board(board)
 
-loop do
 player_places_piece(board)
 display_board(board)
-end
