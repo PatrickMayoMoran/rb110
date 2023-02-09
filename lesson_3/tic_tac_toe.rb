@@ -23,9 +23,8 @@ end
 def random_start
   PLAYERS.sample
 end
-# Game flow:
-#
-# Welcome
+
+###### GAME PLAY ######
 welcome
 # Who goes first?
 prompt "Do you want to go first, second, or for me to choose randomly?"
@@ -37,7 +36,7 @@ Type the number of your choice below:
     3) I choose randomly whether you or the computer goes first
   HEREDOC
   response = gets.chomp
-  player_order = case response
+  first_player = case response
   when '1' then break 'Player'
   when '2' then break 'Computer'
   when '3' then break random_start
