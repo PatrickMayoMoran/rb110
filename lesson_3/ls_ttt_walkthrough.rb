@@ -74,7 +74,8 @@ end
 
 def winning_player(board, player_markers)
   winning_marker = detect_winner(board)
-  player_markers[winning_marker]
+  winner = winning_marker == player_markers[:player] ? "You" : "Computer"
+  winner
 end
 
 def detect_winner(board)
@@ -104,4 +105,4 @@ loop do
 end
 
 winner = winning_player(board, player_markers)
-prompt "#{winner} is the winner!"
+prompt "#{winner} won!"
