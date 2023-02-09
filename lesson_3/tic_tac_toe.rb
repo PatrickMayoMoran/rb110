@@ -24,18 +24,21 @@ def random_start
   PLAYERS.sample
 end
 
-def first_player
+def first_player_prompt
   prompt "Do you want to go first, second, or for me to choose randomly?"
-  loop do
-    prompt <<-HEREDOC
+  prompt <<-HEREDOC
 Type the number of your choice below:
     1) You go first
     2) Computer goes first
     3) I choose randomly whether you or the computer goes first
-    HEREDOC
+  HEREDOC
+end
 
+def first_player
+  loop do
+    first_player_prompt
     response = gets.chomp
-    first_player = case response
+    case response
     when '1' then break 'Player'
     when '2' then break 'Computer'
     when '3' then break random_start
@@ -45,14 +48,11 @@ Type the number of your choice below:
 end
 
 def player_order(first_player)
-  player_order = []
   if first_player == 'Player'
-    player_order = ['Player', 'Computer']
+    ['Player', 'Computer']
   else
-    player_order = ['Computer', 'Player']
+    ['Computer', 'Player']
   end
-
-  return player_order
 end
 
 def display_order(player_order)
@@ -60,6 +60,7 @@ def display_order(player_order)
   second = player_order[1]
   prompt "#{first} will go first and #{second} will go second."
 end
+
 ###### GAME PLAY ######
 welcome
 # Who goes first?
