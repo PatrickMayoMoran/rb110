@@ -91,21 +91,31 @@ def full?(board)
   empty_squares(board).empty?
 end
 
-board = initialize_board
-display_board(board)
+prompt "Welcome to Tic Tac Toe!"
 
-player_markers = {player: nil, computer: nil}
-choose_marker(player_markers) 
-
-loop do 
-  player_places_piece(board, player_markers)
-  computer_places_piece(board, player_markers)
+loop do
+  board = initialize_board
   display_board(board)
-  break if winner?(board) || full?(board)
+  
+  player_markers = {player: nil, computer: nil}
+  choose_marker(player_markers) 
+  
+  loop do 
+    player_places_piece(board, player_markers)
+    computer_places_piece(board, player_markers)
+    display_board(board)
+    break if winner?(board) || full?(board)
+  end
+  
+  prompt "It's a tie!" if full?(board) && !winner?(board)
+  if winner?(board)
+    winner = winning_player(board, player_markers)
+    prompt "#{winner} won!"
+  end
+  
+  prompt "Play again? (y or n)"
+  play_again = gets.chomp.downcase.start_with?('y')
+  break unless play_again
 end
 
-prompt "It's a tie!" if full?(board) && !winner?(board)
-if winner?(board)
-  winner = winning_player(board, player_markers)
-  prompt "#{winner} won!"
-end
+prompt "Thanks for playing!"
