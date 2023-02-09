@@ -102,6 +102,7 @@ loop do
   
   loop do 
     player_places_piece(board, player_markers)
+    break if winner?(board) || full?(board)
     computer_places_piece(board, player_markers)
     display_board(board)
     break if winner?(board) || full?(board)
