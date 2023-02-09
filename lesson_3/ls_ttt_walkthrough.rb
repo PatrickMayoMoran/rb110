@@ -16,7 +16,7 @@ def empty_squares(board)
   board.keys.select {|square| board[square] == INITIAL_MARKER}
 end
 
-def player_places_piece(board)
+def player_places_piece(board, player_markers)
   choice = ''
   loop do
     prompt "Choose a valid square: #{empty_squares(board)}"
@@ -24,12 +24,12 @@ def player_places_piece(board)
     break if empty_squares(board).include?(choice)
     prompt "Not a valid square - choose again"
   end
-  board[choice] = X_MARKER
+  board[choice] = player_markers[:player]
 end
 
-def computer_places_piece(board)
+def computer_places_piece(board, player_markers)
   choice = empty_squares(board).sample
-  board[choice] = O_MARKER
+  board[choice] = player_markers[:computer]
 end
 
 def initialize_board
@@ -51,6 +51,21 @@ def display_board(board)
   puts "     |     |     "
   puts "  #{board[7]}  |  #{board[8]}  |  #{board[9]}  "
   puts "     |     |     "
+end
+
+def choose_marker(markers)
+  prompt "Do you want to use X or O?"
+  player_marker = nil
+  loop do
+    player_marker = gets.chomp.upcase
+    break if player_marker == 'X' || player_marker == 'O'
+    prompt "That's not a valid marker - please enter X or O"
+  end
+  player_marker = player_marker == 'X' ? X_MARKER : O_MARKER
+  computer_marker = player_marker == 'X' ? O_MARKER : X_MARKER
+  markers[:player] = player_marker
+  markers[:computer] = computer_marker
+  markers
 end
 
 def winner?(board)
@@ -78,9 +93,15 @@ end
 board = initialize_board
 display_board(board)
 
+player_markers = {player: nil, computer: nil}
+choose_marker(player_markers) 
+
 loop do 
-  player_places_piece(board)
-  computer_places_piece(board)
+  player_places_piece(board, player_markers)
+  computer_places_piece(board, player_markers)
   display_board(board)
   break if winner?(board) || full?(board)
 end
+
+winner = winning_player(board, player_markers)
+prompt "#{winner} is the winner!"
