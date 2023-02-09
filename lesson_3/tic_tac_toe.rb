@@ -1,6 +1,8 @@
 ###### TIC TAC TOE GAME #######
+PLAYERS = ['Player', 'Computer']
+
 def prompt(msg)
-  puts "=> #{msg}"
+  puts "==> #{msg}"
 end
 
 def continue
@@ -17,13 +19,31 @@ def welcome
   prompt "Ready to start?"
   continue
 end
+
+def random_start
+  PLAYERS.sample
+end
 # Game flow:
 #
 # Welcome
 welcome
-#   Greeting message
-#   Ready to start?
 # Who goes first?
+prompt "Do you want to go first, second, or for me to choose randomly?"
+loop do
+  prompt <<-HEREDOC
+Type the number of your choice below:
+    1) You go first
+    2) Computer goes first
+    3) I choose randomly whether you or the computer goes first
+  HEREDOC
+  response = gets.chomp
+  player_order = case response
+  when '1' then break 'Player'
+  when '2' then break 'Computer'
+  when '3' then break random_start
+  else          prompt "That's not a valid choice"
+  end
+end
 #   Choose first, second, or random
 #   Message about who's going first
 # LOOP of markign squares
