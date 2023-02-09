@@ -3,6 +3,10 @@ require 'pry'
 INITIAL_MARKER = ' '
 X_MARKER = 'X'
 O_MARKER = 'O'
+MARKERS = [X_MARKER, O_MARKER]
+WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                [[1, 5, 9], [3, 5, 7]]              # diagonals
 
 def prompt(msg)
   puts "=> #{msg}"
@@ -53,16 +57,15 @@ def winner?(board)
   !!detect_winner(board)
 end
 
-def detect_winner(board)
-  winning_squares = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
-                    [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
-                    [[1, 5, 9], [3, 5, 7]]              # diagonals
+def winning_player(board, player_markers)
+  winning_marker = detect_winner(board)
+  player_markers[winning_marker]
+end
 
-  markers = [X_MARKER, O_MARKER]
-  markers.each do |marker|
-    winning_squares.each do |line|
-      # binding.pry
-      return true if line.all? { |square| board[square] == marker }
+def detect_winner(board)
+  MARKERS.each do |marker|
+    WINNING_LINES.each do |line|
+      return marker if line.all? { |square| board[square] == marker }
     end
   end
   nil
