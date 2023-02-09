@@ -3,18 +3,25 @@ def prompt(msg)
   puts "=> #{msg}"
 end
 
+def continue
+  prompt "Press any key to continue:"
+  loop do
+    response = gets
+    break if response
+  end
+  system 'clear'
+end
+
+def welcome
+  prompt "Welcome to Tic Tac Toe! Your goal is to get three in a row"
+  prompt "Ready to start?"
+  continue
+end
 # Game flow:
 #
 # Welcome
+welcome
 #   Greeting message
-prompt "Welcome to Tic Tac Toe! Your goal is to get three in a row"
-prompt "Press any key to continue:"
-loop do
-  response = gets
-  break if response
-end
-system 'clear'
-#   Rules
 #   Ready to start?
 # Who goes first?
 #   Choose first, second, or random
