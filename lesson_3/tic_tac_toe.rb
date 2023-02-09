@@ -24,25 +24,33 @@ def random_start
   PLAYERS.sample
 end
 
-###### GAME PLAY ######
-welcome
-# Who goes first?
-prompt "Do you want to go first, second, or for me to choose randomly?"
-loop do
-  prompt <<-HEREDOC
+def first_player
+  prompt "Do you want to go first, second, or for me to choose randomly?"
+  loop do
+    prompt <<-HEREDOC
 Type the number of your choice below:
     1) You go first
     2) Computer goes first
     3) I choose randomly whether you or the computer goes first
-  HEREDOC
-  response = gets.chomp
-  first_player = case response
-  when '1' then break 'Player'
-  when '2' then break 'Computer'
-  when '3' then break random_start
-  else          prompt "That's not a valid choice"
+    HEREDOC
+
+    response = gets.chomp
+    first_player = case response
+    when '1' then break 'Player'
+    when '2' then break 'Computer'
+    when '3' then break random_start
+    else          prompt "That's not a valid choice"
+    end
   end
 end
+
+def player_order(first_player)
+end
+
+###### GAME PLAY ######
+welcome
+# Who goes first?
+player_order(first_player)
 #   Choose first, second, or random
 #   Message about who's going first
 # LOOP of markign squares
