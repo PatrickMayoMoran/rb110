@@ -55,10 +55,17 @@ def player_order(first_player)
   return player_order
 end
 
+def display_order(player_order)
+  first = player_order[0]
+  second = player_order[1]
+  prompt "#{first} will go first and #{second} will go second."
+end
 ###### GAME PLAY ######
 welcome
 # Who goes first?
 player_order = player_order(first_player)
+system 'clear'
+display_order(player_order)
 #   Choose first, second, or random
 #   Message about who's going first
 # LOOP of markign squares
