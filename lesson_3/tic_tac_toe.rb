@@ -45,12 +45,20 @@ Type the number of your choice below:
 end
 
 def player_order(first_player)
+  player_order = []
+  if first_player == 'Player'
+    player_order = ['Player', 'Computer']
+  else
+    player_order = ['Computer', 'Player']
+  end
+
+  return player_order
 end
 
 ###### GAME PLAY ######
 welcome
 # Who goes first?
-player_order(first_player)
+player_order = player_order(first_player)
 #   Choose first, second, or random
 #   Message about who's going first
 # LOOP of markign squares
