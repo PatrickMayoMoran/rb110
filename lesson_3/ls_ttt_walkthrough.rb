@@ -13,7 +13,7 @@ def prompt(msg)
 end
 
 def empty_squares(board)
-  board.keys.select {|square| board[square] == INITIAL_MARKER}
+  board.keys.select { |square| board[square] == INITIAL_MARKER }
 end
 
 def player_places_piece(board, player_markers)
@@ -96,24 +96,24 @@ prompt "Welcome to Tic Tac Toe!"
 loop do
   board = initialize_board
   display_board(board)
-  
-  player_markers = {player: nil, computer: nil}
-  choose_marker(player_markers) 
-  
-  loop do 
+
+  player_markers = { player: nil, computer: nil }
+  choose_marker(player_markers)
+
+  loop do
     player_places_piece(board, player_markers)
     break if winner?(board) || full?(board)
     computer_places_piece(board, player_markers)
     display_board(board)
     break if winner?(board) || full?(board)
   end
-  
+
   prompt "It's a tie!" if full?(board) && !winner?(board)
   if winner?(board)
     winner = winning_player(board, player_markers)
     prompt "#{winner} won!"
   end
-  
+
   prompt "Play again? (y or n)"
   play_again = gets.chomp.downcase.start_with?('y')
   break unless play_again
