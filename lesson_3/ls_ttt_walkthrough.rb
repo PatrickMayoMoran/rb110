@@ -38,6 +38,7 @@ def initialize_board
   new_board
 end
 
+# rubocop:disable Metrics/AbcSize
 def display_board(board)
   system 'clear'
   puts "     |     |     "
@@ -52,6 +53,7 @@ def display_board(board)
   puts "  #{board[7]}  |  #{board[8]}  |  #{board[9]}  "
   puts "     |     |     "
 end
+# rubocop:enable Metrics/AbcSize
 
 def choose_marker(markers)
   prompt "Do you want to use X or O?"
