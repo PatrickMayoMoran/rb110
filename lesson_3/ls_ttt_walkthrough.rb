@@ -104,5 +104,8 @@ loop do
   break if winner?(board) || full?(board)
 end
 
-winner = winning_player(board, player_markers)
-prompt "#{winner} won!"
+prompt "It's a tie!" if full?(board) && !winner?(board)
+if winner?(board)
+  winner = winning_player(board, player_markers)
+  prompt "#{winner} won!"
+end
