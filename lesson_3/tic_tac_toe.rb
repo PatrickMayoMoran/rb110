@@ -1,9 +1,19 @@
 ###### TIC TAC TOE GAME #######
+def prompt(msg)
+  puts "=> #{msg}"
+end
 
 # Game flow:
 #
 # Welcome
 #   Greeting message
+prompt "Welcome to Tic Tac Toe! Your goal is to get three in a row"
+prompt "Press any key to continue:"
+loop do
+  response = gets
+  break if response
+end
+system 'clear'
 #   Rules
 #   Ready to start?
 # Who goes first?
