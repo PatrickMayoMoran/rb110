@@ -91,11 +91,9 @@ end
 
 def play_game(board, player_order)
   player = player_order[0]
-  p player
 #  place_marker(board, player)
 #  winner?(board)
   player = switch_turns(player)
-  p player
 end
 
 ###### GAME PLAY ######
