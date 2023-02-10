@@ -85,14 +85,18 @@ def display_board(board)
   puts "     |     |     "
 end
 
+def play_game(board, player_order)
+end
+
 ###### GAME PLAY ######
 # welcome
-# Who goes first?
+### WHO GOES FIRST? ###
 # player_order = player_order(first_player)
 # system 'clear'
 # display_order(player_order)
 board = initialize_board
 display_board(board)
+play_game(board, player_order)
 # LOOP of markign squares
 #   Display board
 #   Add computer/player move
