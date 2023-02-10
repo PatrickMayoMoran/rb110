@@ -85,15 +85,25 @@ def display_board(board)
   puts "     |     |     "
 end
 
+def switch_turns(player)
+  player = player == 'Player' ? 'Computer' : 'Player'
+end
+
 def play_game(board, player_order)
+  player = player_order[0]
+  p player
+#  place_marker(board, player)
+#  winner?(board)
+  player = switch_turns(player)
+  p player
 end
 
 ###### GAME PLAY ######
 # welcome
 ### WHO GOES FIRST? ###
-# player_order = player_order(first_player)
-# system 'clear'
-# display_order(player_order)
+player_order = player_order(first_player)
+system 'clear'
+display_order(player_order)
 board = initialize_board
 display_board(board)
 play_game(board, player_order)
