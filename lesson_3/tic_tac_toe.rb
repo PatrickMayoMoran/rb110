@@ -61,12 +61,26 @@ def display_order(player_order)
   prompt "#{first} will go first and #{second} will go second."
 end
 
+def display_board(board)
+end
+
+def initialize_board
+  board = {}
+  for i in (1..9)
+    board[i] = i.to_s
+  end
+
+  board
+end
+
 ###### GAME PLAY ######
 welcome
 # Who goes first?
 player_order = player_order(first_player)
 system 'clear'
 display_order(player_order)
+board = initialize_board
+p board
 # LOOP of markign squares
 #   Display board
 #   Add computer/player move
