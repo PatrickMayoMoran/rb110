@@ -67,8 +67,6 @@ welcome
 player_order = player_order(first_player)
 system 'clear'
 display_order(player_order)
-#   Choose first, second, or random
-#   Message about who's going first
 # LOOP of markign squares
 #   Display board
 #   Add computer/player move
