@@ -61,9 +61,6 @@ def display_order(player_order)
   prompt "#{first} will go first and #{second} will go second."
 end
 
-def display_board(board)
-end
-
 def initialize_board
   board = {}
   for i in (1..9)
@@ -73,14 +70,29 @@ def initialize_board
   board
 end
 
+def display_board(board)
+  system 'clear'
+  puts "     |     |     "
+  puts "  #{board[1]}  |  #{board[2]}  |  #{board[3]}  "
+  puts "     |     |     "
+  puts "-----+-----+-----"
+  puts "     |     |     "
+  puts "  #{board[4]}  |  #{board[5]}  |  #{board[6]}  "
+  puts "     |     |     "
+  puts "-----+-----+-----"
+  puts "     |     |     "
+  puts "  #{board[7]}  |  #{board[8]}  |  #{board[9]}  "
+  puts "     |     |     "
+end
+
 ###### GAME PLAY ######
-welcome
+# welcome
 # Who goes first?
-player_order = player_order(first_player)
-system 'clear'
-display_order(player_order)
+# player_order = player_order(first_player)
+# system 'clear'
+# display_order(player_order)
 board = initialize_board
-p board
+display_board(board)
 # LOOP of markign squares
 #   Display board
 #   Add computer/player move
