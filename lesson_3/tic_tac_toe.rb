@@ -2,6 +2,9 @@
 PLAYERS = ['Player', 'Computer']
 X_MARKER = 'X'
 O_MARKER = 'O'
+WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                [[1, 5, 9], [3, 5, 7]]              # diagonals
 
 def prompt(msg)
   puts "==> #{msg}"
@@ -119,11 +122,8 @@ def full?(board)
 end
 
 def winner?(board, markers)
-  winning_lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
-                  [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
-                  [[1, 5, 9], [3, 5, 7]]              # diagonals
   markers.each do |_, marker|
-    winning_lines.each do |line|
+    WINNING_LINES.each do |line|
       return true if line.all? { |square| board[square] == marker }
     end
   end
@@ -194,15 +194,16 @@ def get_game_settings
   return player_order, markers
 end
 
-###### GAME PLAY ######
+###### WELCOME ######
 system 'clear'
 welcome
 system 'clear'
+###### GAME PLAY ######
 player_order, markers = get_game_settings
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
-# Declare winner or tie
+detect_winner(board)
 # Ask if want to play again?
 # if yes, start over from Who goes first
 # Otherwise, end game and say goodbye
