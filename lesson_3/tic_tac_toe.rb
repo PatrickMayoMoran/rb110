@@ -65,7 +65,7 @@ end
 
 def initialize_board
   board = {}
-  for i in (1..9)
+  (1..9).each do |i|
     board[i] = i.to_s
   end
 
@@ -88,7 +88,7 @@ def display_board(board)
 end
 
 def switch_turns(player)
-  player = player == 'Player' ? 'Computer' : 'Player'
+  player == 'Player' ? 'Computer' : 'Player'
 end
 
 def play_game(board, player_order, markers)
@@ -111,7 +111,7 @@ def winner?(board, markers)
                   [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
                   [[1, 5, 9], [3, 5, 7]]              # diagonals
   markers.each do |_, marker|
-    winning_lines.each do | line |
+    winning_lines.each do |line|
       return true if line.all? { |square| board[square] == marker }
     end
   end
