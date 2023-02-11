@@ -1,5 +1,7 @@
 ###### TIC TAC TOE GAME #######
 PLAYERS = ['Player', 'Computer']
+X_MARKER = 'X'
+O_MARKER = 'O'
 
 def prompt(msg)
   puts "==> #{msg}"
@@ -89,11 +91,45 @@ def switch_turns(player)
   player = player == 'Player' ? 'Computer' : 'Player'
 end
 
-def play_game(board, player_order)
+def play_game(board, player_order, markers)
   player = player_order[0]
-#  place_marker(board, player)
+  place_marker(board, player, markers)
 #  winner?(board)
   player = switch_turns(player)
+end
+
+def place_marker(board, player, markers)
+  if player == 'Player'
+    player_places_marker(board, markers)
+  else
+    computer_places_marker(board, markers)
+  end
+end
+
+def free_spaces(board)
+  board.keys.select { |key| board[key] == key.to_s }
+end
+
+def computer_places_marker(board, markers)
+  free_spaces = free_spaces(board)
+  space = free_spaces.sample
+  board[space] = markers[:computer]
+end
+
+def choose_marker
+  markers = {}
+  prompt "Would you like to be X or O? Type your answer below:"
+  response = nil
+  loop do
+    response = gets.chomp.downcase
+    break if response == 'x' || response == 'o'
+    prompt "Not a valid choice - please type X or O"
+  end
+  player_marker = response == 'x' ? X_MARKER : O_MARKER
+  computer_marker = player_marker == X_MARKER ? O_MARKER : X_MARKER
+  markers[:player] = player_marker
+  markers[:computer] = computer_marker
+  markers
 end
 
 ###### GAME PLAY ######
@@ -101,10 +137,11 @@ end
 ### WHO GOES FIRST? ###
 player_order = player_order(first_player)
 system 'clear'
+markers = choose_marker
 display_order(player_order)
 board = initialize_board
 display_board(board)
-play_game(board, player_order)
+play_game(board, player_order, markers)
 # LOOP of markign squares
 #   Display board
 #   Add computer/player move
