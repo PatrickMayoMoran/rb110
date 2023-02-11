@@ -93,9 +93,22 @@ end
 
 def play_game(board, player_order, markers)
   player = player_order[0]
-  place_marker(board, player, markers)
-#  winner?(board)
-  player = switch_turns(player)
+  loop do
+    place_marker(board, player, markers)
+    break if winner?(board, markers)
+    player = switch_turns(player)
+  end
+end
+
+def winner?(board, markers)
+  winning_lines = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                  [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                  [[1, 5, 9], [3, 5, 7]]              # diagonals
+  markers.each do |_, marker|
+    winning_lines.each do | line |
+      return true if line.all? { |square| square == marker }
+    end
+  end
 end
 
 def place_marker(board, player, markers)
