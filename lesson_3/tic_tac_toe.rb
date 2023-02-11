@@ -166,14 +166,18 @@ def player_places_marker(board, markers)
   board[response] = markers[:player]
 end
 
+def display_markers(markers)
+end
+
 ###### GAME PLAY ######
 # welcome
 ### WHO GOES FIRST? ###
 player_order = player_order(first_player)
 system 'clear'
-markers = choose_marker
 display_order(player_order)
 continue
+markers = choose_marker
+display_markers(markers)
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
