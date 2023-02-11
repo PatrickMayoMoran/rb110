@@ -216,6 +216,18 @@ def get_result(board, markers)
   return 'tie'
 end
 
+def display_result(result)
+  if    result == 'Player'
+    puts "You won!"
+    return
+  elsif result == 'Computer'
+    puts "Computer won!"  
+    return
+  else
+    puts "It's a tie!"
+  end
+end
+
 ###### WELCOME ######
 welcome
 ###### GAME PLAY ######
@@ -224,7 +236,7 @@ board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
 result = get_result(board, markers)
-p result
+display_result(result)
 # Ask if want to play again?
 # if yes, start over from Who goes first
 # Otherwise, end game and say goodbye
