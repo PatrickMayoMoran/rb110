@@ -246,6 +246,5 @@ loop do
   display_result(result)
   break unless play_again?
 end
-# Ask if want to play again?
-# if yes, start over from Who goes first
-# Otherwise, end game and say goodbye
+prompt "Thanks for playing; goodbye!"
+
