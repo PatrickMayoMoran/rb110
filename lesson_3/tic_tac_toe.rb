@@ -96,9 +96,14 @@ def play_game(board, player_order, markers)
   loop do
     place_marker(board, player, markers)
     display_board(board)
-    break if winner?(board, markers)
+    break if winner?(board, markers) || full?(board)
     player = switch_turns(player)
   end
+end
+
+def full?(board)
+  free_spaces = get_free_spaces(board)
+  free_spaces.empty?
 end
 
 def winner?(board, markers)
@@ -122,12 +127,12 @@ def place_marker(board, player, markers)
   end
 end
 
-def free_spaces(board)
+def get_free_spaces(board)
   board.keys.select { |key| board[key] == key.to_s }
 end
 
 def computer_places_marker(board, markers)
-  free_spaces = free_spaces(board)
+  free_spaces = get_free_spaces(board)
   space = free_spaces.sample
   board[space] = markers[:computer]
 end
@@ -149,7 +154,7 @@ def choose_marker
 end
 
 def player_places_marker(board, markers)
-  free_spaces = free_spaces(board)
+  free_spaces = get_free_spaces(board)
   response = nil
   loop do
     prompt "Choose a square: #{free_spaces}"
@@ -168,6 +173,7 @@ player_order = player_order(first_player)
 system 'clear'
 markers = choose_marker
 display_order(player_order)
+continue
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
