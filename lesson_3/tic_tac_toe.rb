@@ -173,10 +173,11 @@ def display_markers(markers)
 end
 
 ###### GAME PLAY ######
-# welcome
+system 'clear'
+welcome
+system 'clear'
 ### WHO GOES FIRST? ###
 player_order = player_order(first_player)
-system 'clear'
 display_order(player_order)
 continue
 markers = choose_marker
