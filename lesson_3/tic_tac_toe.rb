@@ -184,17 +184,21 @@ def display_markers(markers)
   prompt "Player will be #{p_marker} and computer will be #{c_marker}"
 end
 
+def get_game_settings
+  player_order = player_order(first_player)
+  display_order(player_order)
+  continue
+  markers = choose_marker
+  display_markers(markers)
+  continue
+  return player_order, markers
+end
+
 ###### GAME PLAY ######
 system 'clear'
 welcome
 system 'clear'
-### WHO GOES FIRST? ###
-player_order = player_order(first_player)
-display_order(player_order)
-continue
-markers = choose_marker
-display_markers(markers)
-continue
+player_order, markers = get_game_settings
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
