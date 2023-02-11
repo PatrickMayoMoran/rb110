@@ -228,15 +228,26 @@ def display_result(result)
   end
 end
 
+def play_again?
+  prompt "Play again? y to play again; anything else to quit"
+  response = gets.chomp.downcase
+  return true if response == 'y'
+  false
+end
+
 ###### WELCOME ######
 welcome
 ###### GAME PLAY ######
-player_order, markers = get_game_settings
-board = initialize_board
-display_board(board)
-play_game(board, player_order, markers)
-result = get_result(board, markers)
-display_result(result)
+system 'clear'
+loop do
+  player_order, markers = get_game_settings
+  board = initialize_board
+  display_board(board)
+  play_game(board, player_order, markers)
+  result = get_result(board, markers)
+  display_result(result)
+  break unless play_again?
+end
 # Ask if want to play again?
 # if yes, start over from Who goes first
 # Otherwise, end game and say goodbye
