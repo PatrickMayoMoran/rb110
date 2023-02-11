@@ -95,6 +95,7 @@ def play_game(board, player_order, markers)
   player = player_order[0]
   loop do
     place_marker(board, player, markers)
+    display_board(board)
     break if winner?(board, markers)
     player = switch_turns(player)
   end
@@ -106,9 +107,11 @@ def winner?(board, markers)
                   [[1, 5, 9], [3, 5, 7]]              # diagonals
   markers.each do |_, marker|
     winning_lines.each do | line |
-      return true if line.all? { |square| square == marker }
+      return true if line.all? { |square| board[square] == marker }
     end
   end
+
+  false
 end
 
 def place_marker(board, player, markers)
@@ -143,6 +146,19 @@ def choose_marker
   markers[:player] = player_marker
   markers[:computer] = computer_marker
   markers
+end
+
+def player_places_marker(board, markers)
+  free_spaces = free_spaces(board)
+  response = nil
+  loop do
+    prompt "Choose a square: #{free_spaces}"
+    response = gets.chomp.to_i
+    break if free_spaces.include?(response)
+    prompt "Not a valid choice"
+  end
+
+  board[response] = markers[:player]
 end
 
 ###### GAME PLAY ######
