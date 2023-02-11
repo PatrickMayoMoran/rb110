@@ -186,7 +186,7 @@ def display_markers(markers)
   prompt "Player will be #{p_marker} and computer will be #{c_marker}"
 end
 
-def get_game_settings
+def choose_game_settings
   player_order = player_order(first_player)
   display_order(player_order)
   continue
@@ -213,16 +213,14 @@ end
 def get_result(board, markers)
   return 'Player' if player_won?(board, markers)
   return 'Computer' if computer_won?(board, markers)
-  return 'tie'
+  'tie'
 end
 
 def display_result(result)
   if    result == 'Player'
     puts "You won!"
-    return
   elsif result == 'Computer'
-    puts "Computer won!"  
-    return
+    puts "Computer won!"
   else
     puts "It's a tie!"
   end
@@ -240,7 +238,7 @@ welcome
 ###### GAME PLAY ######
 system 'clear'
 loop do
-  player_order, markers = get_game_settings
+  player_order, markers = choose_game_settings
   board = initialize_board
   display_board(board)
   play_game(board, player_order, markers)
