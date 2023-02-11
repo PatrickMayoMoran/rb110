@@ -210,7 +210,7 @@ def computer_won?(board, markers)
   false
 end
 
-def detect_winner(board, markers)
+def get_result(board, markers)
   return 'Player' if player_won?(board, markers)
   return 'Computer' if computer_won?(board, markers)
   return 'tie'
@@ -223,7 +223,7 @@ player_order, markers = get_game_settings
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
-result = detect_winner(board, markers)
+result = get_result(board, markers)
 p result
 # Ask if want to play again?
 # if yes, start over from Who goes first
