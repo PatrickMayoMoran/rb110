@@ -198,11 +198,6 @@ continue
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
-# LOOP of markign squares
-#   Display board
-#   Add computer/player move
-#   check for winner or board full
-#   if winner/tie, break, otherwise continue
 # Declare winner or tie
 # Ask if want to play again?
 # if yes, start over from Who goes first
