@@ -196,6 +196,23 @@ def get_game_settings
   return player_order, markers
 end
 
+def player_won?(board, markers)
+end
+
+def computer_won?(board, markers)
+end
+
+def detect_winner(board, markers)
+  return 'Player' if player_won?(board, markers)
+  return 'Computer' if computer_won?(board, markers)
+  return 'tie'
+  markers.each do |_, marker|
+    WINNING_LINES.each do |line|
+      return true if line.all? { |square| board[square] == marker }
+    end
+  end
+end
+
 ###### WELCOME ######
 welcome
 ###### GAME PLAY ######
@@ -203,7 +220,7 @@ player_order, markers = get_game_settings
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
-detect_winner(board)
+detect_winner(board, markers)
 # Ask if want to play again?
 # if yes, start over from Who goes first
 # Otherwise, end game and say goodbye
