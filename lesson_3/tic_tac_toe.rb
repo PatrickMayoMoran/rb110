@@ -167,6 +167,9 @@ def player_places_marker(board, markers)
 end
 
 def display_markers(markers)
+  p_marker = markers[:player]
+  c_marker = markers[:computer]
+  prompt "Player will be #{p_marker} and computer will be #{c_marker}"
 end
 
 ###### GAME PLAY ######
@@ -178,6 +181,7 @@ display_order(player_order)
 continue
 markers = choose_marker
 display_markers(markers)
+continue
 board = initialize_board
 display_board(board)
 play_game(board, player_order, markers)
