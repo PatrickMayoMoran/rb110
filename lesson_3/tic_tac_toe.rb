@@ -20,9 +20,11 @@ def continue
 end
 
 def welcome
+  system 'clear'
   prompt "Welcome to Tic Tac Toe! Your goal is to get three in a row"
   prompt "Ready to start?"
   continue
+  system 'clear'
 end
 
 def random_start
@@ -195,9 +197,7 @@ def get_game_settings
 end
 
 ###### WELCOME ######
-system 'clear'
 welcome
-system 'clear'
 ###### GAME PLAY ######
 player_order, markers = get_game_settings
 board = initialize_board
