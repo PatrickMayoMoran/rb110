@@ -74,9 +74,9 @@ end
 
 def display_board(board)
   system 'clear'
-  puts "     |     |     "
-  puts "  #{board[1]}  |  #{board[2]}  |  #{board[3]}  "
-  puts "     |     |     "
+  display_top(board)
+  # display_middle(board)
+  # display_bottom(board)
   puts "-----+-----+-----"
   puts "     |     |     "
   puts "  #{board[4]}  |  #{board[5]}  |  #{board[6]}  "
@@ -84,6 +84,12 @@ def display_board(board)
   puts "-----+-----+-----"
   puts "     |     |     "
   puts "  #{board[7]}  |  #{board[8]}  |  #{board[9]}  "
+  puts "     |     |     "
+end
+
+def display_top(board)
+  puts "     |     |     "
+  puts "  #{board[1]}  |  #{board[2]}  |  #{board[3]}  "
   puts "     |     |     "
 end
 
