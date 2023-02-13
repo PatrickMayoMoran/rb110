@@ -41,7 +41,7 @@ Type the number of your choice below:
   HEREDOC
 end
 
-def first_player
+def choose_first_player
   loop do
     first_player_prompt
     response = gets.chomp
@@ -187,6 +187,7 @@ def display_markers(markers)
 end
 
 def choose_game_settings
+  first_player = choose_first_player
   player_order = player_order(first_player)
   display_order(player_order)
   continue
