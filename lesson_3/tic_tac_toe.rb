@@ -54,7 +54,7 @@ def choose_first_player
   end
 end
 
-def player_order(first_player)
+def initialize_player_order(first_player)
   if first_player == 'Player'
     ['Player', 'Computer']
   else
@@ -188,7 +188,7 @@ end
 
 def choose_game_settings
   first_player = choose_first_player
-  player_order = player_order(first_player)
+  player_order = initialize_player_order(first_player)
   display_order(player_order)
   continue
   markers = choose_marker
