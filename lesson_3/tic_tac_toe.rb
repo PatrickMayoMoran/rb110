@@ -28,7 +28,7 @@ def continue
   system 'clear'
 end
 
-def welcome
+def display_welcome
   system 'clear'
   prompt "Welcome to Tic Tac Toe! Your goal is to get three in a row"
   prompt "Ready to start?"
@@ -234,7 +234,7 @@ def play_again?
 end
 
 ###### WELCOME ######
-welcome
+display_welcome
 ###### GAME PLAY ######
 system 'clear'
 loop do
