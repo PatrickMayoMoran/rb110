@@ -6,6 +6,15 @@ WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
                 [[1, 5, 9], [3, 5, 7]]              # diagonals
 
+FIRST_PLAYER_PROMPT = 
+<<-HEREDOC
+Do you want to go first, second, or for me to choose randomly?
+    Type the number of your choice below:
+    1) You go first
+    2) Computer goes first
+    3) I choose randomly whether you or the computer goes first
+HEREDOC
+
 def prompt(msg)
   puts "==> #{msg}"
 end
@@ -31,19 +40,9 @@ def random_start
   PLAYERS.sample
 end
 
-def first_player_prompt
-  prompt "Do you want to go first, second, or for me to choose randomly?"
-  prompt <<-HEREDOC
-Type the number of your choice below:
-    1) You go first
-    2) Computer goes first
-    3) I choose randomly whether you or the computer goes first
-  HEREDOC
-end
-
 def choose_first_player
   loop do
-    first_player_prompt
+    prompt FIRST_PLAYER_PROMPT
     response = gets.chomp
     case response
     when '1' then break 'Player'
