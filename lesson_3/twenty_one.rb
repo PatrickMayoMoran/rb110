@@ -1,3 +1,6 @@
+SUITS = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
+CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
+        ['Jack', 'Queen', 'King', 'Ace']                 # face cards
 # PLayers cards
 #   Array as well? Where you push cards on as you pop them off the deck?
 #   Hmmm... but then how to calculate values from cards?
