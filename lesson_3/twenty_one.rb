@@ -112,6 +112,29 @@ def add_ace_points(number_of_aces, total_points)
   total_points
 end
 
+def confirmed?(action)
+  prompt "You've chosen to #{action}."
+  prompt "Type y to confirm; anything else to choose again"
+  response = gets.chomp.downcase
+  return true if response == 'y'
+  false
+end
+
+def hit?
+  prompt "Hit or stay? type hit to hit, anything else to stay."
+  action = nil
+  loop do
+    response = gets.chomp.downcase
+    action = response == "hit" ? "hit" : "stay"
+    break if confirmed?(action)
+  end
+  if action == "hit"
+    true
+  else
+    false
+  end
+end
+
 deck = initialize_deck
 # 2. Deal cards to player and dealer
 player_hand = []
@@ -123,6 +146,13 @@ display_cards(players_cards)
 player_hand_value = get_hand_value(player_hand)
 prompt "Total points:"
 prompt player_hand_value
+loop do
+  if hit?
+    deal_card!(deck, player_hand)
+  else
+    break
+  end
+end
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
