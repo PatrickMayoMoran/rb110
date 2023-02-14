@@ -134,12 +134,19 @@ def hit?
     false
   end
 end
+def get_player_info(player_hand)
 
+  return players_cards, player_hand_value
+end
+
+#### GAME PLAY ####
 deck = initialize_deck
 # 2. Deal cards to player and dealer
 player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
+players_cards, player_hand_value = get_player_info(player_hand)
+display_player_info(players_cards, player_hand_value)
 players_cards = get_cards(player_hand)
 prompt "Your cards:"
 display_cards(players_cards)
