@@ -96,14 +96,23 @@ def get_hand_value(hand)
   total_points += get_non_ace_points(hand)
   number_of_aces = count_aces(hand)
   if number_of_aces > 0
-    total_points += calculate_ace_points(number_of_aces, total_points)
+    total_points = add_ace_points(number_of_aces, total_points)
   end
 
   total_points
 end
 
-def calculate_ace_points(number_of_aces, total_points)
-  1
+def add_ace_points(number_of_aces, total_points)
+  total_points = total_points
+  number_of_aces.times do
+    if total_points <= 10
+      total_points += 11
+    else
+      total_points += 1
+    end
+  end
+
+  total_points
 end
 
 deck = initialize_deck
