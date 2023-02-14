@@ -33,7 +33,7 @@ def initialize_deck
   SUITS.each do |suit|
     CARDS.each do |card|
       value = get_card_value(card)
-      current_card = { card + " of " + suit => value }
+      current_card = [card + " of " + suit, value]
       deck.push(current_card)
     end
   end
@@ -59,7 +59,7 @@ end
 def get_cards(hand)
   cards = []
   hand.each do |card|
-    cards += card.keys
+    cards << card[0]
   end
   cards
 end
@@ -69,6 +69,9 @@ def display_cards(cards)
 end
 def get_hand_value(hand)
   total_points = 0
+  hand.each do |card|
+    card_value = card[1] if card[1].class == Integer
+  end
 
 end
 
