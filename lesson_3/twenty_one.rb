@@ -66,6 +66,10 @@ end
 def display_cards(cards)
   puts cards
 end
+def get_hand_value(hand)
+  total_points = 0
+
+end
 
 deck = initialize_deck
 # 2. Deal cards to player and dealer
@@ -75,6 +79,9 @@ initialize_opening_hand!(deck, player_hand, dealer_hand)
 players_cards = get_cards(player_hand)
 prompt "Your cards:"
 display_cards(players_cards)
+player_hand_value = get_hand_value(player_hand)
+prompt "Total points:"
+prompt player_hand_value
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
