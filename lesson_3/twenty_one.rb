@@ -51,11 +51,30 @@ def initialize_opening_hand!(deck, player_hand, dealer_hand)
   end
 end
 
+def prompt(msg)
+  puts "==> #{msg}"
+end
+
+def get_cards(hand)
+  cards = []
+  hand.each do |card|
+    cards += card.keys
+  end
+  cards
+end
+
+def display_hands(player_hand, dealer_hand)
+  prompt "Your cards:"
+  players_cards = get_cards(player_hand)
+  puts players_cards
+end
+
 deck = initialize_deck
 # 2. Deal cards to player and dealer
 player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
+display_hands(player_hand, dealer_hand)
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
