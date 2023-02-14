@@ -8,6 +8,22 @@ CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
 #   Aces will always be an exception; need way to handle the potential
 #   point values
 # 1. Initialize deck
+#### Array of Strings ####
+def string_deck
+  deck = []
+  SUITS.each do |suit|
+    CARDS.each do |card|
+      current_card = card + " of " + suit
+      deck.push(current_card)
+    end
+  end
+
+  deck
+end
+
+deck = string_deck
+p deck
+p deck.shuffle
 ### Possible decks
 # Hash with suits as keys, arrays of cards as values
 #   With this, you could randomly sample a suit and a value?
