@@ -79,10 +79,24 @@ def get_non_ace_points(hand)
   total_points
 end
 
+def ace?(card)
+  card[1].class == Array
+end
+
+def count_aces(hand)
+  count = 0
+  hand.each do |card|
+    count += 1 if ace?(card)
+  end
+  count
+end
+
 def get_hand_value(hand)
   total_points = 0
   total_points += get_non_ace_points(hand)
+  number_of_aces = count_aces(hand)
 
+  total_points
 end
 
 deck = initialize_deck
