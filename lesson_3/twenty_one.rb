@@ -28,7 +28,7 @@ def get_card_value(card)
   end
 end
 
-def hash_deck
+def initialize_hash_deck
   deck = []
   SUITS.each do |suit|
     CARDS.each do |card|
@@ -40,8 +40,15 @@ def hash_deck
   deck
 end
 
-deck = hash_deck
+def deal_card(deck)
+  card = deck.pop
+end
+
+deck = initialize_hash_deck.shuffle
 # 2. Deal cards to player and dealer
+player_hand = []
+dealer_hand =[]
+p deal_card(deck)
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
