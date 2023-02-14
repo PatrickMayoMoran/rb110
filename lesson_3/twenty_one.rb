@@ -1,6 +1,7 @@
 SUITS = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
 CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
         ['Jack', 'Queen', 'King', 'Ace']                 # face cards
+MAX_POINTS = 21
 # PLayers cards
 # 1. Initialize deck
 #### Array of Strings ####
