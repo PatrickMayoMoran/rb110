@@ -40,15 +40,15 @@ def initialize_deck
   deck.shuffle
 end
 
-def deal_card(deck, hand)
+def deal_card!(deck, hand)
   card = deck.pop
   hand.push(card)
 end
 
 def initialize_opening_hand!(deck, player_hand, dealer_hand)
   2.times do
-    deal_card(deck, player_hand)
-    deal_card(deck, dealer_hand)
+    deal_card!(deck, player_hand)
+    deal_card!(deck, dealer_hand)
   end
 end
 
