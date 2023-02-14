@@ -28,7 +28,7 @@ def get_card_value(card)
   end
 end
 
-def initialize_hash_deck
+def initialize_deck
   deck = []
   SUITS.each do |suit|
     CARDS.each do |card|
@@ -52,7 +52,7 @@ def initialize_opening_hand!(deck, player_hand, dealer_hand)
   end
 end
 
-deck = initialize_hash_deck
+deck = initialize_deck
 # 2. Deal cards to player and dealer
 player_hand = []
 dealer_hand =[]
