@@ -2,11 +2,6 @@ SUITS = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
 CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
         ['Jack', 'Queen', 'King', 'Ace']                 # face cards
 # PLayers cards
-#   Array as well? Where you push cards on as you pop them off the deck?
-#   Hmmm... but then how to calculate values from cards?
-#   Cards could also be dictionaries with names and values
-#   Aces will always be an exception; need way to handle the potential
-#   point values
 # 1. Initialize deck
 #### Array of Strings ####
 def string_deck
@@ -20,10 +15,6 @@ def string_deck
 
   deck
 end
-
-# deck = string_deck
-# p deck
-# p deck.shuffle
 
 ### ARRAY OF HASHES ###
 def get_card_value(card)
@@ -50,11 +41,6 @@ def hash_deck
 end
 
 deck = hash_deck
-p deck
-p deck.shuffle
-### Possible decks
-# Hash with suits as keys, arrays of cards as values
-#   With this, you could randomly sample a suit and a value?
 # 2. Deal cards to player and dealer
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
