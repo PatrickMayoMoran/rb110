@@ -21,17 +21,40 @@ def string_deck
   deck
 end
 
-deck = string_deck
+# deck = string_deck
+# p deck
+# p deck.shuffle
+
+### ARRAY OF HASHES ###
+def get_card_value(card)
+  value = nil
+  if card.to_i.to_s == card
+    value = card.to_i
+  elsif card == "Ace"
+    value = [1, 11]
+  else
+    value = 10
+  end
+end
+
+def hash_deck
+  deck = []
+  SUITS.each do |suit|
+    CARDS.each do |card|
+      value = get_card_value(card)
+      current_card = { card + " of " + suit => value }
+      deck.push(current_card)
+    end
+  end
+  deck
+end
+
+deck = hash_deck
 p deck
 p deck.shuffle
 ### Possible decks
 # Hash with suits as keys, arrays of cards as values
 #   With this, you could randomly sample a suit and a value?
-# Array with each card being a string?
-#   Could generate deck by looping through suits and numbers to
-#   combine and create every single card
-#   Then you could "shuffle" the array for randomization and simply
-#   deal off the top
 # 2. Deal cards to player and dealer
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
