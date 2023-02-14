@@ -67,11 +67,21 @@ end
 def display_cards(cards)
   puts cards
 end
-def get_hand_value(hand)
+
+def get_non_ace_points(hand)
   total_points = 0
   hand.each do |card|
-    card_value = card[1] if card[1].class == Integer
+    if card[1].class == Integer
+      card_value = card[1]
+      total_points += card_value
+    end
   end
+  total_points
+end
+
+def get_hand_value(hand)
+  total_points = 0
+  total_points += get_non_ace_points(hand)
 
 end
 
