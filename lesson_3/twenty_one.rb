@@ -18,13 +18,12 @@ end
 
 ### ARRAY OF HASHES ###
 def get_card_value(card)
-  value = nil
   if card.to_i.to_s == card
-    value = card.to_i
+    card.to_i
   elsif card == "Ace"
-    value = [1, 11]
+    [1, 11]
   else
-    value = 10
+    10
   end
 end
 
@@ -55,7 +54,7 @@ end
 deck = initialize_deck
 # 2. Deal cards to player and dealer
 player_hand = []
-dealer_hand =[]
+dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
