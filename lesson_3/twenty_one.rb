@@ -37,7 +37,7 @@ def initialize_hash_deck
       deck.push(current_card)
     end
   end
-  deck
+  deck.shuffle
 end
 
 def deal_card(deck, hand)
@@ -52,7 +52,7 @@ def initialize_opening_hand!(deck, player_hand, dealer_hand)
   end
 end
 
-deck = initialize_hash_deck.shuffle
+deck = initialize_hash_deck
 # 2. Deal cards to player and dealer
 player_hand = []
 dealer_hand =[]
