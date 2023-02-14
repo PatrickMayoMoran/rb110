@@ -45,10 +45,18 @@ def deal_card(deck, hand)
   hand.push(card)
 end
 
+def initialize_opening_hand!(deck, player_hand, dealer_hand)
+  2.times do
+    deal_card(deck, player_hand)
+    deal_card(deck, dealer_hand)
+  end
+end
+
 deck = initialize_hash_deck.shuffle
 # 2. Deal cards to player and dealer
 player_hand = []
 dealer_hand =[]
+initialize_opening_hand!(deck, player_hand, dealer_hand)
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
