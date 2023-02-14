@@ -49,12 +49,6 @@ deck = initialize_hash_deck.shuffle
 # 2. Deal cards to player and dealer
 player_hand = []
 dealer_hand =[]
-2.times do
-deal_card(deck, player_hand)
-deal_card(deck, dealer_hand)
-end
-p player_hand
-p dealer_hand
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
