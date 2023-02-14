@@ -105,11 +105,8 @@ end
 def add_ace_points(number_of_aces, total_points)
   total_points = total_points
   number_of_aces.times do
-    if total_points <= 10
-      total_points += 11
-    else
-      total_points += 1
-    end
+    additional_points = total_points <= 10 ? 11 : 1
+    total_points += additional_points
   end
 
   total_points
