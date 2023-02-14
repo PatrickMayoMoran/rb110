@@ -63,10 +63,8 @@ def get_cards(hand)
   cards
 end
 
-def display_hands(player_hand, dealer_hand)
-  prompt "Your cards:"
-  players_cards = get_cards(player_hand)
-  puts players_cards
+def display_cards(cards)
+  puts cards
 end
 
 deck = initialize_deck
@@ -74,7 +72,9 @@ deck = initialize_deck
 player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
-display_hands(player_hand, dealer_hand)
+players_cards = get_cards(player_hand)
+prompt "Your cards:"
+display_cards(players_cards)
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
 # 4. If player bust, dealer wins.
