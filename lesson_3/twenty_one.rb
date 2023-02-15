@@ -121,9 +121,9 @@ def confirmed?(action)
 end
 
 def hit?
-  prompt "Hit or stay? type hit to hit, anything else to stay."
   action = nil
   loop do
+    prompt "Hit or stay? type hit to hit, anything else to stay."
     response = gets.chomp.downcase
     action = response == "hit" ? "hit" : "stay"
     break if confirmed?(action)
@@ -154,14 +154,10 @@ dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
 players_cards, player_hand_value = get_player_info(player_hand)
 display_player_info(players_cards, player_hand_value)
-loop do
-  if hit?
-    deal_card!(deck, player_hand)
-    players_cards, player_hand_value = get_player_info(player_hand)
-    display_player_info(players_cards, player_hand_value)
-  else
-    break
-  end
+while hit?
+  deal_card!(deck, player_hand)
+  players_cards, player_hand_value = get_player_info(player_hand)
+  display_player_info(players_cards, player_hand_value)
 end
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
