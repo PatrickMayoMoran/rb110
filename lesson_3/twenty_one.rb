@@ -157,6 +157,7 @@ def display_dealer_hand(dealer_hand)
 end
 
 #### GAME PLAY ####
+system 'clear'
 deck = initialize_deck
 # 2. Deal cards to player and dealer
 player_hand = []
@@ -167,6 +168,7 @@ display_player_info(players_cards, player_hand_value)
 display_dealer_hand(dealer_hand)
 
 while hit?
+  system 'clear'
   deal_card!(deck, player_hand)
   players_cards, player_hand_value = get_player_info(player_hand)
   display_player_info(players_cards, player_hand_value)
@@ -179,7 +181,6 @@ if busted?(player_hand_value)
 else
   # dealer_turn(dealer_hand)
 end
-# 4. If player bust, dealer wins.
 # 5. Dealer turn: hit or stay
 #   - repeat until total >= 17
 # 6. If dealer bust, player wins.
