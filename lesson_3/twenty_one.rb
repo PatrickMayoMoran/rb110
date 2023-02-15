@@ -146,6 +146,11 @@ def display_player_info(players_cards, player_hand_value)
   prompt "Total points:"
   prompt player_hand_value
 end
+
+def busted?(hand_value)
+  hand_value > 21
+end
+
 #### GAME PLAY ####
 deck = initialize_deck
 # 2. Deal cards to player and dealer
@@ -158,6 +163,7 @@ while hit?
   deal_card!(deck, player_hand)
   players_cards, player_hand_value = get_player_info(player_hand)
   display_player_info(players_cards, player_hand_value)
+  break if busted?(player_hand_value)
 end
 # 3. Player turn: hit or stay
 #   - repeat until bust or "stay"
