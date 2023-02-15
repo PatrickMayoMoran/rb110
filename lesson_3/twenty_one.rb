@@ -135,10 +135,17 @@ def hit?
   end
 end
 def get_player_info(player_hand)
-
+  player_hand_value = get_hand_value(player_hand)
+  players_cards = get_cards(player_hand)
   return players_cards, player_hand_value
 end
 
+def display_player_info(players_cards, player_hand_value)
+  prompt "Your cards:"
+  display_cards(players_cards)
+  prompt "Total points:"
+  prompt player_hand_value
+end
 #### GAME PLAY ####
 deck = initialize_deck
 # 2. Deal cards to player and dealer
@@ -147,12 +154,6 @@ dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
 players_cards, player_hand_value = get_player_info(player_hand)
 display_player_info(players_cards, player_hand_value)
-players_cards = get_cards(player_hand)
-prompt "Your cards:"
-display_cards(players_cards)
-player_hand_value = get_hand_value(player_hand)
-prompt "Total points:"
-prompt player_hand_value
 loop do
   if hit?
     deal_card!(deck, player_hand)
