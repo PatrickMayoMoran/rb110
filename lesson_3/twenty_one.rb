@@ -130,12 +130,10 @@ def hit?
     action = response == "hit" ? "hit" : "stay"
     break if confirmed?(action)
   end
-  if action == "hit"
-    true
-  else
-    false
-  end
+
+  action == "hit"
 end
+
 def get_player_info(player_hand)
   player_hand_value = get_hand_value(player_hand)
   players_cards = get_cards(player_hand)
@@ -224,7 +222,6 @@ else
 end
 
 system 'clear'
-winner = compare_hands(player_hand, dealer_hand) if winner == nil
+winner = compare_hands(player_hand, dealer_hand) if winner.nil?
 display_winner(winner)
 display_final_hands(player_hand, dealer_hand)
-
