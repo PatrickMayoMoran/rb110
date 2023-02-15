@@ -185,6 +185,16 @@ def display_winner(winner)
   end
 end
 
+def display_final_hands(player_hand, dealer_hand)
+  prompt "Your final cards:"
+  player_cards = get_cards(player_hand)
+  puts player_cards
+
+  prompt "Dealer's final cards:"
+  dealer_cards = get_cards(dealer_hand)
+  puts dealer_cards
+end
+
 #### GAME PLAY ####
 system 'clear'
 deck = initialize_deck
@@ -212,5 +222,9 @@ else
   dealer_turn!(deck, dealer_hand)
   winner = "Player" if busted?(dealer_hand)
 end
+
+system 'clear'
 winner = compare_hands(player_hand, dealer_hand) if winner == nil
 display_winner(winner)
+display_final_hands(player_hand, dealer_hand)
+
