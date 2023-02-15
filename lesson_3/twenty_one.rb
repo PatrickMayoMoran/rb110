@@ -157,6 +157,8 @@ display_player_info(players_cards, player_hand_value)
 loop do
   if hit?
     deal_card!(deck, player_hand)
+    players_cards, player_hand_value = get_player_info(player_hand)
+    display_player_info(players_cards, player_hand_value)
   else
     break
   end
