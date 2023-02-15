@@ -149,7 +149,8 @@ def display_player_info(players_cards, player_hand_value)
   puts player_hand_value
 end
 
-def busted?(hand_value)
+def busted?(hand)
+  hand_value = get_hand_value(hand)
   hand_value > MAX_POINTS
 end
 
@@ -166,7 +167,9 @@ def dealer_turn!(deck, dealer_hand)
   end
 end
 
-def compare_hands(player_hand_value, dealer_hand_value)
+def compare_hands(player_hand, dealer_hand)
+  player_hand_value = get_hand_value(player_hand)
+  dealer_hand_value = get_hand_value(dealer_hand)
   case player_hand_value <=> dealer_hand_value
   when  1 then "Player"
   when  0 then "Tie"
@@ -199,16 +202,15 @@ while hit?
   players_cards, player_hand_value = get_player_info(player_hand)
   display_player_info(players_cards, player_hand_value)
   display_dealer_hand(dealer_hand)
-  break if busted?(player_hand_value)
+  break if busted?(player_hand)
 end
 
 winner = nil
-if busted?(player_hand_value)
+if busted?(player_hand)
   winner = "Dealer"
 else
   dealer_turn!(deck, dealer_hand)
-  dealer_hand_value = get_hand_value(dealer_hand)
-  winner = "Player" if busted?(dealer_hand_value)
+  winner = "Player" if busted?(dealer_hand)
 end
-winner = compare_hands(player_hand_value, dealer_hand_value) if winner == nil
+winner = compare_hands(player_hand, dealer_hand) if winner == nil
 display_winner(winner)
