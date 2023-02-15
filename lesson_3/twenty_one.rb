@@ -195,28 +195,3 @@ end
 #   - repeat until total >= 17
 # 6. If dealer bust, player wins.
 # 7. Compare cards and declare winner.
-#
-#### TEST CASES #####
-# Multi Ace hand
-# one_ace = [["King of Hearts", 10],
-#           ["Ace of Hearts", [1, 11]]
-#           ]
-# two_aces = [["Nine of Hearts", 9],
-#           ["Ace of Hearts", [1, 11]],
-#           ["Ace of Spades", [1, 11]]
-#          ]
-# three_aces = [["Eight of Hearts", 8],
-#           ["Ace of Hearts", [1, 11]],
-#           ["Ace of Spades", [1, 11]],
-#           ["Ace of Clubs", [1, 11]]
-#          ]
-# four_aces = [["Seven of Hearts", 7],
-#           ["Ace of Hearts", [1, 11]],
-#           ["Ace of Spades", [1, 11]],
-#           ["Ace of Clubs", [1, 11]],
-#           ["Ace of Diamonds", [1, 11]]
-#          ]
-# p get_hand_value(one_ace)
-# p get_hand_value(two_aces)
-# p get_hand_value(three_aces)
-# p get_hand_value(four_aces)
