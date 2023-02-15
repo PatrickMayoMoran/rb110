@@ -151,6 +151,11 @@ def busted?(hand_value)
   hand_value > MAX_POINTS
 end
 
+def display_dealer_hand(dealer_hand)
+  prompt "Dealer's cards:"
+  prompt "#{dealer_hand[0][0]} and unknown card"
+end
+
 #### GAME PLAY ####
 deck = initialize_deck
 # 2. Deal cards to player and dealer
@@ -159,14 +164,21 @@ dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
 players_cards, player_hand_value = get_player_info(player_hand)
 display_player_info(players_cards, player_hand_value)
+display_dealer_hand(dealer_hand)
+
 while hit?
   deal_card!(deck, player_hand)
   players_cards, player_hand_value = get_player_info(player_hand)
   display_player_info(players_cards, player_hand_value)
+  display_dealer_hand(dealer_hand)
   break if busted?(player_hand_value)
 end
-# 3. Player turn: hit or stay
-#   - repeat until bust or "stay"
+
+if busted?(player_hand_value)
+  prompt "You busted; dealer wins!"
+else
+  # dealer_turn(dealer_hand)
+end
 # 4. If player bust, dealer wins.
 # 5. Dealer turn: hit or stay
 #   - repeat until total >= 17
