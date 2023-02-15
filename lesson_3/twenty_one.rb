@@ -2,6 +2,7 @@ SUITS = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
 CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
         ['Jack', 'Queen', 'King', 'Ace']                 # face cards
 MAX_POINTS = 21
+DEALER_LIMIT = 17
 # PLayers cards
 # 1. Initialize deck
 #### Array of Strings ####
@@ -159,7 +160,7 @@ end
 
 def dealer_turn!(deck, dealer_hand)
   value = get_hand_value(dealer_hand)
-  while value < 17
+  while value < DEALER_LIMIT
     deal_card!(deck, dealer_hand)
     value = get_hand_value(dealer_hand)
   end
