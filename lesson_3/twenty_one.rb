@@ -166,6 +166,14 @@ def dealer_turn!(deck, dealer_hand)
   end
 end
 
+def compare_hands(player_hand_value, dealer_hand_value)
+  case player_hand_value <=> dealer_hand_value
+  when  1 then "Player"
+  when  0 then "Tie"
+  when -1 then "Dealer"
+  end
+end
+
 #### GAME PLAY ####
 system 'clear'
 deck = initialize_deck
@@ -186,12 +194,14 @@ while hit?
   break if busted?(player_hand_value)
 end
 
+winner = nil
 if busted?(player_hand_value)
-  prompt "You busted; dealer wins!"
+  winner = "Dealer"
 else
   dealer_turn!(deck, dealer_hand)
+  dealer_hand_value = get_hand_value(dealer_hand)
+  winner = "Player" if busted?(dealer_hand_value)
 end
-# 5. Dealer turn: hit or stay
-#   - repeat until total >= 17
-# 6. If dealer bust, player wins.
-# 7. Compare cards and declare winner.
+winner = compare_hands(player_hand_value, dealer_hand_value) if winner == nil
+p winner
+# display_winner(winner)
