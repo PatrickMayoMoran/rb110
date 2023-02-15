@@ -174,6 +174,14 @@ def compare_hands(player_hand_value, dealer_hand_value)
   end
 end
 
+def display_winner(winner)
+  case winner
+  when "Player" then prompt "You win!"
+  when "Dealer" then prompt "Dealer wins!"
+  when "Tie"    then prompt "It's a tie!"
+  end
+end
+
 #### GAME PLAY ####
 system 'clear'
 deck = initialize_deck
@@ -203,5 +211,4 @@ else
   winner = "Player" if busted?(dealer_hand_value)
 end
 winner = compare_hands(player_hand_value, dealer_hand_value) if winner == nil
-p winner
-# display_winner(winner)
+display_winner(winner)
