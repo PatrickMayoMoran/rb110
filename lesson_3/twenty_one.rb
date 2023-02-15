@@ -144,7 +144,7 @@ def display_player_info(players_cards, player_hand_value)
   prompt "Your cards:"
   display_cards(players_cards)
   prompt "Total points:"
-  prompt player_hand_value
+  puts player_hand_value
 end
 
 def busted?(hand_value)
@@ -153,7 +153,7 @@ end
 
 def display_dealer_hand(dealer_hand)
   prompt "Dealer's cards:"
-  prompt "#{dealer_hand[0][0]} and unknown card"
+  puts "#{dealer_hand[0][0]} and unknown card"
 end
 
 #### GAME PLAY ####
