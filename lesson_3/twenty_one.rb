@@ -148,7 +148,7 @@ def display_player_info(players_cards, player_hand_value)
 end
 
 def busted?(hand_value)
-  hand_value > 21
+  hand_value > MAX_POINTS
 end
 
 #### GAME PLAY ####
