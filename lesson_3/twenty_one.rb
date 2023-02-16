@@ -49,10 +49,8 @@ end
 def get_non_ace_points(hand)
   total_points = 0
   hand.each do |card|
-    if card[1].class == Integer
-      card_value = card[1]
-      total_points += card_value
-    end
+    value = get_card_value(card)
+    total_points += value if value.class == Integer
   end
   total_points
 end
