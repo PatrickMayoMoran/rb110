@@ -5,9 +5,9 @@ MAX_POINTS = 21
 DEALER_LIMIT = 17
 
 def get_card_value(card)
-  if card.to_i.to_s == card
-    card.to_i
-  elsif card == "Ace"
+  if card[1].to_i.to_s == card[1]
+    card[1].to_i
+  elsif card[1] == "Ace"
     [1, 11]
   else
     10
