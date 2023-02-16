@@ -37,7 +37,7 @@ end
 def get_cards(hand)
   cards = []
   hand.each do |card|
-    cards << card[0]
+    cards << card[1] + " of " + card[0]
   end
   cards
 end
