@@ -1,6 +1,6 @@
 SUITS = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
-VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
-        ['Jack', 'Queen', 'King', 'Ace']                 # face cards
+VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10',
+          'Jack', 'Queen', 'King', 'Ace']
 MAX_POINTS = 21
 DEALER_LIMIT = 17
 
