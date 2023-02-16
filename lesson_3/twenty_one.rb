@@ -37,7 +37,7 @@ def display_cards(hand)
   hand.each { |card| puts card[1] + " of " + card[0] }
 end
 
-def get_non_ace_points(hand)
+def add_non_ace_points(hand)
   total_points = 0
   hand.each do |card|
     value = get_card_value(card)
@@ -56,10 +56,10 @@ end
 
 def get_hand_value(hand)
   total_points = 0
-  total_points += get_non_ace_points(hand)
+  total_points += add_non_ace_points(hand)
   number_of_aces = count_aces(hand)
   if number_of_aces > 0
-    total_points = add_ace_points(number_of_aces, total_points)
+    return add_ace_points(number_of_aces, total_points)
   end
 
   total_points
