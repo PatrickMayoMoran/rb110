@@ -1,5 +1,5 @@
 SUITS = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
-CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
+VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
         ['Jack', 'Queen', 'King', 'Ace']                 # face cards
 MAX_POINTS = 21
 DEALER_LIMIT = 17
@@ -9,7 +9,7 @@ DEALER_LIMIT = 17
 def string_deck
   deck = []
   SUITS.each do |suit|
-    CARDS.each do |card|
+    VALUES.each do |card|
       current_card = card + " of " + suit
       deck.push(current_card)
     end
@@ -32,7 +32,7 @@ end
 def initialize_deck
   deck = []
   SUITS.each do |suit|
-    CARDS.each do |card|
+    VALUES.each do |card|
       value = get_card_value(card)
       current_card = [card + " of " + suit, value]
       deck.push(current_card)
