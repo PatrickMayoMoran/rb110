@@ -99,10 +99,6 @@ def hit?
   action == "hit"
 end
 
-def get_player_info(player_hand)
-  player_hand_value = get_hand_value(player_hand)
-end
-
 def display_player_info(player_hand, player_hand_value)
   prompt "Your cards:"
   display_cards(player_hand)
@@ -161,14 +157,14 @@ deck = initialize_deck
 player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
-player_hand_value = get_player_info(player_hand)
+player_hand_value = get_hand_value(player_hand)
 display_player_info(player_hand, player_hand_value)
 display_dealer_hand(dealer_hand)
 
 while hit?
   system 'clear'
   deal_card!(deck, player_hand)
-  player_hand_value = get_player_info(player_hand)
+  player_hand_value = get_hand_value(player_hand)
   display_player_info(player_hand, player_hand_value)
   display_dealer_hand(dealer_hand)
   break if busted?(player_hand)
