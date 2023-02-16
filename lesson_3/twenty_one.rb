@@ -112,7 +112,8 @@ end
 
 def display_dealer_hand(dealer_hand)
   prompt "Dealer's cards:"
-  puts "#{dealer_hand[0][0]} and unknown card"
+  first_card = dealer_hand[0][1] + " of " + dealer_hand[0][0]
+  puts "#{first_card} and unknown card"
 end
 
 def dealer_turn!(deck, dealer_hand)
