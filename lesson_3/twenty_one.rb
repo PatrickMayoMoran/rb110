@@ -19,8 +19,7 @@ def initialize_deck
 end
 
 def deal_card!(deck, hand)
-  card = deck.pop
-  hand.push(card)
+  hand.push(deck.pop)
 end
 
 def initialize_opening_hand!(deck, player_hand, dealer_hand)
