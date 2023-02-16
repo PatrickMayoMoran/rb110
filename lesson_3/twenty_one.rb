@@ -34,9 +34,7 @@ def prompt(msg)
 end
 
 def display_cards(hand)
-  hand.each do |card|
-    puts card[1] + " of " + card[0]
-  end
+  hand.each { |card| puts card[1] + " of " + card[0] }
 end
 
 def get_non_ace_points(hand)
