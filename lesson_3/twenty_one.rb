@@ -30,15 +30,7 @@ def get_card_value(card)
 end
 
 def initialize_deck
-  deck = []
-  SUITS.each do |suit|
-    VALUES.each do |card|
-      value = get_card_value(card)
-      current_card = [card + " of " + suit, value]
-      deck.push(current_card)
-    end
-  end
-  deck.shuffle
+  SUITS.product(VALUES).shuffle
 end
 
 def deal_card!(deck, hand)
