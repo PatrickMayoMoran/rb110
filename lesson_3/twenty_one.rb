@@ -57,14 +57,10 @@ def get_non_ace_points(hand)
   total_points
 end
 
-def ace?(card)
-  card[1].class == Array
-end
-
 def count_aces(hand)
   count = 0
   hand.each do |card|
-    count += 1 if ace?(card)
+    count += 1 if card[1] == "Ace"
   end
   count
 end
