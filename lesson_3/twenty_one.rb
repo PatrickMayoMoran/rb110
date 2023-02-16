@@ -3,22 +3,7 @@ VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] + # numbers
         ['Jack', 'Queen', 'King', 'Ace']                 # face cards
 MAX_POINTS = 21
 DEALER_LIMIT = 17
-# PLayers cards
-# 1. Initialize deck
-#### Array of Strings ####
-def string_deck
-  deck = []
-  SUITS.each do |suit|
-    VALUES.each do |card|
-      current_card = card + " of " + suit
-      deck.push(current_card)
-    end
-  end
 
-  deck
-end
-
-### ARRAY OF HASHES ###
 def get_card_value(card)
   if card.to_i.to_s == card
     card.to_i
