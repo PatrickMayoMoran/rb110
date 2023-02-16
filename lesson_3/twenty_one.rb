@@ -106,8 +106,7 @@ def display_player_info(player_hand, player_hand_value)
 end
 
 def busted?(hand)
-  hand_value = get_hand_value(hand)
-  hand_value > MAX_POINTS
+  get_hand_value(hand) > MAX_POINTS
 end
 
 def display_dealer_hand(dealer_hand)
