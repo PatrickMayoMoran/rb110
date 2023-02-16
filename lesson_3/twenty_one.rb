@@ -34,16 +34,10 @@ def prompt(msg)
   puts "==> #{msg}"
 end
 
-def get_cards(hand)
-  cards = []
+def display_cards(hand)
   hand.each do |card|
-    cards << card[1] + " of " + card[0]
+    puts card[1] + " of " + card[0]
   end
-  cards
-end
-
-def display_cards(cards)
-  puts cards
 end
 
 def get_non_ace_points(hand)
@@ -107,13 +101,11 @@ end
 
 def get_player_info(player_hand)
   player_hand_value = get_hand_value(player_hand)
-  players_cards = get_cards(player_hand)
-  return players_cards, player_hand_value
 end
 
-def display_player_info(players_cards, player_hand_value)
+def display_player_info(player_hand, player_hand_value)
   prompt "Your cards:"
-  display_cards(players_cards)
+  display_cards(player_hand)
   prompt "Total points:"
   puts player_hand_value
 end
@@ -156,12 +148,10 @@ end
 
 def display_final_hands(player_hand, dealer_hand)
   prompt "Your final cards:"
-  player_cards = get_cards(player_hand)
-  puts player_cards
+  display_cards(player_hand)
 
   prompt "Dealer's final cards:"
-  dealer_cards = get_cards(dealer_hand)
-  puts dealer_cards
+  display_cards(dealer_hand)
 end
 
 #### GAME PLAY ####
@@ -171,15 +161,15 @@ deck = initialize_deck
 player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
-players_cards, player_hand_value = get_player_info(player_hand)
-display_player_info(players_cards, player_hand_value)
+player_hand_value = get_player_info(player_hand)
+display_player_info(player_hand, player_hand_value)
 display_dealer_hand(dealer_hand)
 
 while hit?
   system 'clear'
   deal_card!(deck, player_hand)
-  players_cards, player_hand_value = get_player_info(player_hand)
-  display_player_info(players_cards, player_hand_value)
+  player_hand_value = get_player_info(player_hand)
+  display_player_info(player_hand, player_hand_value)
   display_dealer_hand(dealer_hand)
   break if busted?(player_hand)
 end
