@@ -97,10 +97,8 @@ def hit?
 end
 
 def display_player_info(player_hand)
-  prompt "Your cards:"
+  prompt "Your cards, with a value of #{get_hand_value(player_hand)}:"
   display_cards(player_hand)
-  prompt "Your points:"
-  puts get_hand_value(player_hand)
 end
 
 def busted?(hand)
