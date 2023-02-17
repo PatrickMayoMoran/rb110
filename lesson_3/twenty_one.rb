@@ -141,10 +141,10 @@ def display_winner(winner)
 end
 
 def display_final_hands(player_hand, dealer_hand)
-  prompt "Your final cards:"
+  prompt "Your cards, with a value of #{get_hand_value(player_hand)}:"
   display_cards(player_hand)
 
-  prompt "Dealer's final cards:"
+  prompt "Dealer's cards, with a value of #{get_hand_value(dealer_hand)}:"
   display_cards(dealer_hand)
 end
 
@@ -176,5 +176,5 @@ end
 
 system 'clear'
 winner = compare_hands(player_hand, dealer_hand) if winner.nil?
-display_winner(winner)
 display_final_hands(player_hand, dealer_hand)
+display_winner(winner)
