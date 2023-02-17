@@ -96,11 +96,11 @@ def hit?
   action == "hit"
 end
 
-def display_player_info(player_hand, player_hand_value)
+def display_player_info(player_hand)
   prompt "Your cards:"
   display_cards(player_hand)
   prompt "Total points:"
-  puts player_hand_value
+  puts get_hand_value(player_hand)
 end
 
 def busted?(hand)
@@ -124,6 +124,7 @@ end
 def compare_hands(player_hand, dealer_hand)
   player_hand_value = get_hand_value(player_hand)
   dealer_hand_value = get_hand_value(dealer_hand)
+
   case player_hand_value <=> dealer_hand_value
   when  1 then "Player"
   when  0 then "Tie"
@@ -150,19 +151,17 @@ end
 #### GAME PLAY ####
 system 'clear'
 deck = initialize_deck
-# 2. Deal cards to player and dealer
+# Deal cards to player and dealer
 player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
-player_hand_value = get_hand_value(player_hand)
-display_player_info(player_hand, player_hand_value)
+display_player_info(player_hand)
 display_dealer_hand(dealer_hand)
 
 while hit?
   system 'clear'
   deal_card!(deck, player_hand)
-  player_hand_value = get_hand_value(player_hand)
-  display_player_info(player_hand, player_hand_value)
+  display_player_info(player_hand)
   display_dealer_hand(dealer_hand)
   break if busted?(player_hand)
 end
