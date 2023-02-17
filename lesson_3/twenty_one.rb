@@ -148,33 +148,46 @@ def display_final_hands(player_hand, dealer_hand)
   display_cards(dealer_hand)
 end
 
-#### GAME PLAY ####
-system 'clear'
-deck = initialize_deck
-# Deal cards to player and dealer
-player_hand = []
-dealer_hand = []
-initialize_opening_hand!(deck, player_hand, dealer_hand)
-display_player_info(player_hand)
-display_dealer_info(dealer_hand)
+def play_again?
+  prompt "Would you like to play again? Y or yes for yes, anything else to quit."
+  response = gets.chomp.downcase
+  response.start_with?('y')
+end
 
-while hit?
+#### GAME PLAY ####
+loop do
   system 'clear'
-  deal_card!(deck, player_hand)
+  deck = initialize_deck
+# Deal cards to player and dealer
+  player_hand = []
+  dealer_hand = []
+  initialize_opening_hand!(deck, player_hand, dealer_hand)
   display_player_info(player_hand)
   display_dealer_info(dealer_hand)
-  break if busted?(player_hand)
+
+  while hit?
+    system 'clear'
+   deal_card!(deck, player_hand)
+   display_player_info(player_hand)
+   display_dealer_info(dealer_hand)
+   break if busted?(player_hand)
+  end
+
+  result = nil
+  if busted?(player_hand)
+   result = "Dealer"
+  else
+   dealer_turn!(deck, dealer_hand)
+   result = "Player" if busted?(dealer_hand)
+  end
+
+  system 'clear'
+  result = get_result(player_hand, dealer_hand) if result.nil?
+  display_final_hands(player_hand, dealer_hand)
+  display_result(result)
+
+  system 'clear'
+  break unless play_again?
 end
 
-result = nil
-if busted?(player_hand)
-  result = "Dealer"
-else
-  dealer_turn!(deck, dealer_hand)
-  result = "Player" if busted?(dealer_hand)
-end
-
-system 'clear'
-result = get_result(player_hand, dealer_hand) if result.nil?
-display_final_hands(player_hand, dealer_hand)
-display_result(result)
+prompt "Thanks for playing - goodbye!"
