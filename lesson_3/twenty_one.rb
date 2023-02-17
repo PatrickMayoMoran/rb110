@@ -99,7 +99,7 @@ end
 def display_player_info(player_hand)
   prompt "Your cards:"
   display_cards(player_hand)
-  prompt "Total points:"
+  prompt "Your points:"
   puts get_hand_value(player_hand)
 end
 
@@ -107,7 +107,7 @@ def busted?(hand)
   get_hand_value(hand) > MAX_POINTS
 end
 
-def display_dealer_hand(dealer_hand)
+def display_dealer_info(dealer_hand)
   prompt "Dealer's cards:"
   first_card = dealer_hand[0][1] + " of " + dealer_hand[0][0]
   puts "#{first_card} and unknown card"
@@ -121,7 +121,7 @@ def dealer_turn!(deck, dealer_hand)
   end
 end
 
-def compare_hands(player_hand, dealer_hand)
+def get_result(player_hand, dealer_hand)
   player_hand_value = get_hand_value(player_hand)
   dealer_hand_value = get_hand_value(dealer_hand)
 
@@ -132,8 +132,8 @@ def compare_hands(player_hand, dealer_hand)
   end
 end
 
-def display_winner(winner)
-  case winner
+def display_result(result)
+  case result
   when "Player" then prompt "You win!"
   when "Dealer" then prompt "Dealer wins!"
   when "Tie"    then prompt "It's a tie!"
@@ -156,25 +156,25 @@ player_hand = []
 dealer_hand = []
 initialize_opening_hand!(deck, player_hand, dealer_hand)
 display_player_info(player_hand)
-display_dealer_hand(dealer_hand)
+display_dealer_info(dealer_hand)
 
 while hit?
   system 'clear'
   deal_card!(deck, player_hand)
   display_player_info(player_hand)
-  display_dealer_hand(dealer_hand)
+  display_dealer_info(dealer_hand)
   break if busted?(player_hand)
 end
 
-winner = nil
+result = nil
 if busted?(player_hand)
-  winner = "Dealer"
+  result = "Dealer"
 else
   dealer_turn!(deck, dealer_hand)
-  winner = "Player" if busted?(dealer_hand)
+  result = "Player" if busted?(dealer_hand)
 end
 
 system 'clear'
-winner = compare_hands(player_hand, dealer_hand) if winner.nil?
+result = get_result(player_hand, dealer_hand) if result.nil?
 display_final_hands(player_hand, dealer_hand)
-display_winner(winner)
+display_result(result)
