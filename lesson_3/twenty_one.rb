@@ -186,7 +186,6 @@ loop do
   display_final_hands(player_hand, dealer_hand)
   display_result(result)
 
-  system 'clear'
   break unless play_again?
 end
 
