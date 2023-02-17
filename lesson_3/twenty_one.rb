@@ -147,7 +147,7 @@ def display_final_hands(player_hand, dealer_hand)
 end
 
 def play_again?
-  prompt "Would you like to play again? Y or yes for yes, anything else to quit."
+  prompt "Play again? Y or yes for yes, anything else to quit."
   response = gets.chomp.downcase
   response.start_with?('y')
 end
@@ -156,27 +156,27 @@ end
 loop do
   system 'clear'
   deck = initialize_deck
-# Deal cards to player and dealer
   player_hand = []
   dealer_hand = []
   initialize_opening_hand!(deck, player_hand, dealer_hand)
+
   display_player_info(player_hand)
   display_dealer_info(dealer_hand)
 
   while hit?
     system 'clear'
-   deal_card!(deck, player_hand)
-   display_player_info(player_hand)
-   display_dealer_info(dealer_hand)
-   break if busted?(player_hand)
+    deal_card!(deck, player_hand)
+    display_player_info(player_hand)
+    display_dealer_info(dealer_hand)
+    break if busted?(player_hand)
   end
 
   result = nil
   if busted?(player_hand)
-   result = "Dealer"
+    result = "Dealer"
   else
-   dealer_turn!(deck, dealer_hand)
-   result = "Player" if busted?(dealer_hand)
+    dealer_turn!(deck, dealer_hand)
+    result = "Player" if busted?(dealer_hand)
   end
 
   system 'clear'
