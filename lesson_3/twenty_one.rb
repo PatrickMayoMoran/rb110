@@ -76,22 +76,10 @@ def add_ace_points(number_of_aces, total_points)
   total_points
 end
 
-def confirmed?(action)
-  prompt "You've chosen to #{action}."
-  prompt "Type y to confirm; anything else to choose again"
-  response = gets.chomp.downcase
-  return true if response == 'y'
-  false
-end
-
 def hit?
-  action = nil
-  loop do
-    prompt "Hit or stay? type hit to hit, anything else to stay."
-    response = gets.chomp.downcase
-    action = response == "hit" ? "hit" : "stay"
-    break if confirmed?(action)
-  end
+  prompt "Hit or stay? type hit to hit, anything else to stay."
+  response = gets.chomp.downcase
+  action = response.start_with?('h') ? "hit" : "stay"
 
   action == "hit"
 end
