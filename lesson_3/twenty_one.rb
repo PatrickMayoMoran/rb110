@@ -66,7 +66,7 @@ def get_hand_value(hand)
 end
 
 def add_ace_points(number_of_aces, total_points)
-  total_points = total_points
+  # total_points = total_points
   buffer = number_of_aces - 1
   number_of_aces.times do
     additional_points = total_points <= (10 - buffer) ? 11 : 1
