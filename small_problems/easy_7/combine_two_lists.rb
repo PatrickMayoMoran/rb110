@@ -25,4 +25,9 @@ def interleave(arr1, arr2)
   interleaved
 end
 
+def interleave2(a1, a2)
+  a1.zip(a2).flatten
+end
+
 p interleave([1, 2, 3], ['a', 'b', 'c']) == [1, 'a', 2, 'b', 3, 'c']
+p interleave2([1, 2, 3], ['a', 'b', 'c']) == [1, 'a', 2, 'b', 3, 'c']
