@@ -1,10 +1,6 @@
 def staggered_case(string)
   string.chars.map.with_index do |c, i|
-    if i.even?
-      c.upcase
-    else
-      c.downcase
-    end
+    i.even? ? c.upcase : c.downcase
   end.join
 end
 
